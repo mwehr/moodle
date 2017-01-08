@@ -213,6 +213,9 @@ function cron_execute_plugin_type($plugintype, $description = null) {
                 // do not execute cron yet
                 continue;
             }
+        } else if ($cronperiod == 0) {
+            // Either $plugin->cron was 0 or no $plugin->cron was found, so do not execute cron yet.
+            continue;
         }
 
         mtrace('Processing cron function for ' . $component . '...');
