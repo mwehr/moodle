@@ -94,20 +94,22 @@ define(['core/ajax', 'jquery', 'core/templates'], function(ajax, $, templates) {
                             }
                         });
                         ctx.identity = identity.join(', ');
-                        promises.push(templates.render('mod_assign/list_participant_user_summary', ctx));
+                        promises[user.id] = (templates.render('mod_assign/list_participant_user_summary', ctx));
                     }
                 });
 
                 // When all the templates have been rendered, call the success handler.
                 $.when.apply($.when, promises).then(function() {
-                    var args = arguments,
-                        i = 0;
-
-                    $.each(results, function(index, user) {
-                        user.label = args[i];
-                        i++;
+                    var args = arguments;
+                    // Loop through results and fetch user with label if label content exists in args.
+                    results = $.grep(results, function(user) {
+                        if (typeof args[user.id] !== 'undefined') {
+                            user.label = args[user.id];
+                            return true;
+                        } else {
+                            return false;
+                        }
                     });
-
                     success(results);
                 });
             }, failure);
