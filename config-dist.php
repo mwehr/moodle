@@ -261,6 +261,9 @@ $CFG->admin = 'admin';
 //      $CFG->session_redis_prefix = ''; // Optional, default is don't set one.
 //      $CFG->session_redis_acquire_lock_timeout = 120;
 //      $CFG->session_redis_lock_expire = 7200;
+//      $CFG->session_redis_serializer_use_igbinary = false; // Optional, default is false.
+//      ** NOTE: phpredis must be compiled with igbinary support.
+//         If you change the serializer you also have to flush the database! **
 //
 //   Memcache session handler (requires memcached server and memcache extension):
 //      $CFG->session_handler_class = '\core\session\memcache';
