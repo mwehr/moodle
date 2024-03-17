@@ -33,3 +33,29 @@
         max-height: calc((100vh - 8px * 2) - var(--navbar-height)) !important; /* stylelint-disable-line declaration-no-important */
     }
 }
+
+/* Fix fullscreen mode in assignment feedback. */
+.path-mod-assign.tox-fullscreen [data-region="grade-panel"] {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.path-mod-assign.tox-fullscreen [data-region="grade-panel"] .mform .fitem.has-popout .felement {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: unset;
+}
+.path-mod-assign.tox-fullscreen [data-region="grade-panel"] .mform .fitem.has-popout.popout {
+    position: unset;
+}
+
+/* Fix fullscreen mode in workshop feedback. */
+#page-mod-workshop-assessment.tox-fullscreen .assessment-form #id_overallfeedbacksectioncontainer .felement {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: unset;
+}
