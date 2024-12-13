@@ -3794,6 +3794,7 @@ EDITOR.prototype = {
                         //
                         // See also: MDL-45580, MDL-66626, MDL-75898.
                         if (this.get('readonly') === true) {
+                            this.pagecount = data.pagecount;
                             this.prepare_pages_for_display(data);
                             return;
                         }
